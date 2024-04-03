@@ -4,10 +4,12 @@ public class Master implements Observer{
 
     private String name;
     private int salary;
+    private String jobTitle;
 
-    public Master(String name){
+    public Master(String name, String jobTitle){
         this.name = name;
         salary = 80000;
+        this.jobTitle = jobTitle;
     }
 
     @Override

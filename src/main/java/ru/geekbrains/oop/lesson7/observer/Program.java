@@ -20,7 +20,7 @@ public class Program {
 //        Company yandex = new Company("Yandex", publisher, 95000);
 //        Company geekBrains = new Company("GeekBrains", publisher, 98000);
 
-        Student student = new Student("Student #1");
+        Student student = new Student("Student #1", "Программист");
 //        Master master1 = new Master("Master #1");
 //        Freelancer freelancer1 = new Freelancer("Freelancer #1");
 

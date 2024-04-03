@@ -4,10 +4,12 @@ public class Freelancer implements Observer {
 
     private String name;
     private int salary;
+    private String jobTitle;
 
-    public Freelancer(String name) {
+    public Freelancer(String name, String jobTitle) {
         this.name = name;
         salary = 50000;
+        this.jobTitle = jobTitle;
     }
 
     @Override
