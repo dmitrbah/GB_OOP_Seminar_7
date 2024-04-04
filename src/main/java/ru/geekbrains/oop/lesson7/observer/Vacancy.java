@@ -17,8 +17,32 @@ public class Vacancy {
         this.status = true;
     }
 
+    public int getSalary() {
+        return salary;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public String getJobTitle() {
+        return jobTitle;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
-        return String.format("Вакансия в компании %s; должность %s; предлагаемая зарплата %d", companyName, jobTitle, salary);
+        if (status) {
+            return String.format("Открытая вакансия в компании %s; должность %s; предлагаемая зарплата %d", companyName, jobTitle, salary);
+        } else {
+            return String.format("Закрытая вакансия в компании %s; должность %s; предлагаемая зарплата %d", companyName, jobTitle, salary);
+        }
     }
 }

@@ -5,6 +5,7 @@ public class Freelancer implements Observer {
     private String name;
     private int salary;
     private String jobTitle;
+    private static boolean hiredStatus = true;
 
     public Freelancer(String name, String jobTitle) {
         this.name = name;
@@ -13,15 +14,31 @@ public class Freelancer implements Observer {
     }
 
     @Override
-    public void receiveOffer(String nameCompany, int salary) {
-        if (this.salary <= salary){
+    public void receiveOffer(Vacancy vacancy) {
+        if (hiredStatus && this.salary <= vacancy.getSalary() && vacancy.isStatus() && this.jobTitle.equals(vacancy.getJobTitle())){
             System.out.printf("Фрилансер %s: Мне нужна эта работа! (компания: %s; заработная плата: %d)\n",
-                    name, nameCompany, salary);
-            this.salary = salary;
-        }
-        else {
+                    name, vacancy.getCompanyName(), vacancy.getSalary());
+            this.salary = vacancy.getSalary();
+            vacancy.setStatus(false);
+            hiredStatus = false;
+        } else if (!hiredStatus) {
+            System.out.printf("Фрилансер %s: Я уже нанят!)\n", name);
+        } else {
             System.out.printf("Фрилансер %s: Я найду работу получше! (компания: %s; заработная плата: %d)\n",
-                    name, nameCompany, salary);
+                    name, vacancy.getCompanyName(), salary);
         }
     }
+
+    @Override
+    public boolean isStatus() {
+        return hiredStatus;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Соискатель фрилансер %s; должность %s; ожидаемая зарплата %d",
+                name, jobTitle, salary);
+    }
+
+
 }

@@ -26,8 +26,15 @@ public class Company {
     }
 
     public void needEmployee(){
-        int salary = random.nextInt(maxSalary);
-        jobAgency.sendOffer(name, salary);
+        if (vacancyList.size() == 0) {
+            System.out.println("Вакансии у компании %s отсутствуют! Сначала создайте вакансии");
+        } else {
+            for (Vacancy vacancy : vacancyList) {
+                if (vacancy.isStatus()) {
+                    jobAgency.sendOffer(vacancy);
+                }
+            }
+        }
     }
 
     public void createVacancyList(int vacancyNumber) {

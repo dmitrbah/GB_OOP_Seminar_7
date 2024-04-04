@@ -7,9 +7,9 @@ public class JobAgency implements Publisher {
 
     private Collection<Observer> observers = new ArrayList<>();
 
-    public void sendOffer(String companyName, int salary){
+    public void sendOffer(Vacancy vacancy){
         for (Observer observer : observers){
-            observer.receiveOffer(companyName, salary);
+            observer.receiveOffer(vacancy);
         }
     }
 
@@ -21,6 +21,13 @@ public class JobAgency implements Publisher {
     @Override
     public void removeObserver(Observer observer) {
         observers.remove(observer);
+    }
+
+    @Override
+    public void showObserversList() {
+        for (Observer observer : observers) {
+            System.out.println(observer);
+        }
     }
 
 }
